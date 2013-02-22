@@ -1,4 +1,4 @@
-package org.hibernate.tutorials;
+package org.javabrains.tutorials;
 
 import junit.framework.Test;
 import junit.framework.TestCase;

@@ -9,7 +9,7 @@
 
     <artifactId>javabrains</artifactId>
     <name>Java Brains Hibernate Tutorial</name>
-    <description> Java Brains - Free Java training videos. Produced by Koushik Kothagal.</description>
+    <description>Java Brains - Free Java training videos. Produced by Koushik Kothagal.</description>
     <packaging>jar</packaging>
     <url>http://javabrains.koushik.org/p/hibernate.html</url>
 
@@ -28,10 +28,12 @@
     </dependencies>
 
     <build>
-        <resources>
-            <resource>
 
+        <!-- Configuration which allows configuration files (such as xml files) to be placed in the same folder as java files -->
+<!--        <resources>
+            <resource>
+                <directory>${basedir}/src/main/java/</directory>
             </resource>
-        </resources>
+        </resources>-->
     </build>
 </project>
