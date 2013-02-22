@@ -1,5 +1,6 @@
 package org.javabrains.tutorials.dto;
 
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -21,14 +22,27 @@ import java.util.Date;
 @Entity
 @Table(name = "USER_DETAILS")
 public class UserDetails {
-    @Id @GeneratedValue
+    @Id @GeneratedValue(strategy = GenerationType.AUTO)
     private int userId;
+
     private String userName;
+
     @Temporal(TemporalType.DATE)
     private Date jointDate;
-    private String address;
+
+    @Embedded
+    private Address address;
+
     @Lob
     private String description;
+
+    public Address getAddress() {
+        return address;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
+    }
 
     public Date getJointDate() {
         return jointDate;
@@ -36,14 +50,6 @@ public class UserDetails {
 
     public void setJointDate(Date jointDate) {
         this.jointDate = jointDate;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
     }
 
     public String getDescription() {

@@ -3,6 +3,7 @@ package org.javabrains.tutorials;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
+import org.javabrains.tutorials.dto.Address;
 import org.javabrains.tutorials.dto.UserDetails;
 
 import java.util.Date;
@@ -17,7 +18,11 @@ public class App {
         UserDetails user = new UserDetails();
         int id = 1;
         user.setUserName("Three");
-        user.setAddress("Some User Address");
+
+        Address address = new Address();
+        address.setCity("New York");
+
+        user.setAddress(address);
         user.setJointDate(new Date());
         user.setDescription("Some Cool description");
 
