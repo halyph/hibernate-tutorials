@@ -5,6 +5,8 @@ import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 import org.javabrains.tutorials.dto.UserDetails;
 
+import java.util.Date;
+
 /**
  * Demo App.
  */
@@ -15,6 +17,10 @@ public class App {
         UserDetails userDetails = new UserDetails();
         userDetails.setUserId(3);
         userDetails.setUserName("Three");
+        userDetails.setAddress("Some User Address");
+        userDetails.setJointDate(new Date());
+        userDetails.setDescription("Some Cool description");
+
 
         @SuppressWarnings("deprecation")
         SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
