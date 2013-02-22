@@ -14,23 +14,32 @@ public class App {
     public static void main(String[] args) {
         System.out.println("BEGIN");
 
-        UserDetails userDetails = new UserDetails();
-        userDetails.setUserId(3);
-        userDetails.setUserName("Three");
-        userDetails.setAddress("Some User Address");
-        userDetails.setJointDate(new Date());
-        userDetails.setDescription("Some Cool description");
+        UserDetails user = new UserDetails();
+        int id = 3;
+        user.setUserId(id);
+        user.setUserName("Three");
+        user.setAddress("Some User Address");
+        user.setJointDate(new Date());
+        user.setDescription("Some Cool description");
 
 
         @SuppressWarnings("deprecation")
         SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
-        Session session = sessionFactory.openSession();
 
+        Session session = sessionFactory.openSession();
         session.beginTransaction();
-        session.save(userDetails);
+        session.save(user);
         session.getTransaction().commit();
 
         session.close();
+
+        user = null;
+
+        session = sessionFactory.openSession();
+        session.beginTransaction();
+        user = (UserDetails) session.get(UserDetails.class, id);
+
+        System.out.format("User name is %s", user.getUserName());
 
     }
 }
