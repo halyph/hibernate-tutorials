@@ -44,6 +44,7 @@
         <module>annotations</module>
         <module>entitymanager</module>
         <module>envers</module>
+        <module>javabrains</module>
     </modules>
 
     <dependencies>
