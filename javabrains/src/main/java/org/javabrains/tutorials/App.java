@@ -22,7 +22,11 @@ public class App {
         Address address = new Address();
         address.setCity("New York");
 
-        user.setAddress(address);
+        Address officeAddress = new Address();
+        officeAddress.setCity("Office Boston");
+
+        user.setHomeAddress(address);
+        user.setOfficeAddress(officeAddress);
         user.setJointDate(new Date());
         user.setDescription("Some Cool description");
 
