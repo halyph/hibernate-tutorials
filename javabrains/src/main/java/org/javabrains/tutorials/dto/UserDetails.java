@@ -1,6 +1,8 @@
 package org.javabrains.tutorials.dto;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Lob;
 import javax.persistence.Table;
@@ -19,7 +21,7 @@ import java.util.Date;
 @Entity
 @Table(name = "USER_DETAILS")
 public class UserDetails {
-    @Id
+    @Id @GeneratedValue
     private int userId;
     private String userName;
     @Temporal(TemporalType.DATE)

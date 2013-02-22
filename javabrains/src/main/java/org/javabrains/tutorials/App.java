@@ -15,13 +15,14 @@ public class App {
         System.out.println("BEGIN");
 
         UserDetails user = new UserDetails();
-        int id = 3;
-        user.setUserId(id);
+        int id = 1;
         user.setUserName("Three");
         user.setAddress("Some User Address");
         user.setJointDate(new Date());
         user.setDescription("Some Cool description");
 
+        UserDetails user2 = new UserDetails();
+        user2.setUserName("Second user");
 
         @SuppressWarnings("deprecation")
         SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
@@ -29,6 +30,7 @@ public class App {
         Session session = sessionFactory.openSession();
         session.beginTransaction();
         session.save(user);
+        session.save(user2);
         session.getTransaction().commit();
 
         session.close();
