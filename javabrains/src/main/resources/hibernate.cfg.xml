@@ -24,6 +24,8 @@
         <!-- 		<property name="hbm2ddl.auto">update</property> -->
 
         <mapping class="org.javabrains.tutorials.dto.UserDetails"/>
+        <mapping class="org.javabrains.tutorials.dto.User"/>
+        <mapping class="org.javabrains.tutorials.dto.Vehicle"/>
 
     </session-factory>
 </hibernate-configuration>
