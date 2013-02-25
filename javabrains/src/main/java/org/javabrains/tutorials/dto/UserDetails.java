@@ -1,6 +1,12 @@
 package org.javabrains.tutorials.dto;
 
+import org.hibernate.annotations.CollectionId;
+import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.Type;
+
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
@@ -34,18 +40,23 @@ public class UserDetails {
     @Lob
     private String description;
 
+    // to support named collection table we have to add @JoinTable-name (w/o it it will be generated)
+    // to support named foreign key we have to use @JoinColumn
     @ElementCollection
     @JoinTable(name="USER_ADDRESS",
         joinColumns = @JoinColumn(name = "USER_ID")
     )
-    private Set<Address> listOfAddresses = new HashSet<Address>();
+    //to support primary key we have to add @GenericGenerator and @CollectionId
+    @GenericGenerator(name = "hilo-gen", strategy = "hilo")
+    @CollectionId(columns = {@Column(name="ADDRESS_ID")}, generator = "hilo-gen", type = @Type(type="long"))
+    private Collection<Address> listOfAddresses = new ArrayList<Address>();
 
 
-    public Set<Address> getListOfAddresses() {
+    public Collection<Address> getListOfAddresses() {
         return listOfAddresses;
     }
 
-    public void setListOfAddresses(Set<Address> listOfAddresses) {
+    public void setListOfAddresses(Collection<Address> listOfAddresses) {
         this.listOfAddresses = listOfAddresses;
     }
 
