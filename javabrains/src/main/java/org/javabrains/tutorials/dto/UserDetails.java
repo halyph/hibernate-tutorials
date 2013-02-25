@@ -1,18 +1,6 @@
 package org.javabrains.tutorials.dto;
 
-import javax.persistence.AttributeOverride;
-import javax.persistence.AttributeOverrides;
-import javax.persistence.Column;
-import javax.persistence.ElementCollection;
-import javax.persistence.Embedded;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Lob;
-import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
+import javax.persistence.*;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
@@ -47,6 +35,9 @@ public class UserDetails {
     private String description;
 
     @ElementCollection
+    @JoinTable(name="USER_ADDRESS",
+        joinColumns = @JoinColumn(name = "USER_ID")
+    )
     private Set<Address> listOfAddresses = new HashSet<Address>();
 
 
