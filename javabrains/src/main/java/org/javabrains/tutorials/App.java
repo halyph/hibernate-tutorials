@@ -33,6 +33,15 @@ public class App {
         UserDetails user2 = new UserDetails();
         user2.setUserName("Second user");
 
+        Address addr1 = new Address();
+        addr1.setCity("Lviv");
+        Address addr2 = new Address();
+        addr2.setCity("Kalush");
+
+
+        user2.getListOfAddresses().add(addr1);
+        user2.getListOfAddresses().add(addr2);
+
         @SuppressWarnings("deprecation")
         SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
 

@@ -3,6 +3,7 @@ package org.javabrains.tutorials.dto;
 import javax.persistence.AttributeOverride;
 import javax.persistence.AttributeOverrides;
 import javax.persistence.Column;
+import javax.persistence.ElementCollection;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -13,6 +14,8 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * Created with IntelliJ IDEA.
@@ -42,6 +45,18 @@ public class UserDetails {
     private Address officeAddress;
     @Lob
     private String description;
+
+    @ElementCollection
+    private Set<Address> listOfAddresses = new HashSet<Address>();
+
+
+    public Set<Address> getListOfAddresses() {
+        return listOfAddresses;
+    }
+
+    public void setListOfAddresses(Set<Address> listOfAddresses) {
+        this.listOfAddresses = listOfAddresses;
+    }
 
     public Address getOfficeAddress() {
         return officeAddress;
