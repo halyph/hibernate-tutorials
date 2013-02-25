@@ -9,9 +9,9 @@ import org.javabrains.tutorials.dto.UserDetails;
 import java.util.Date;
 
 /**
- * Demo App.
+ * Demo AppUserDetails.
  */
-public class App {
+public class AppUserDetails {
     public static void main(String[] args) {
         System.out.println("BEGIN");
 
