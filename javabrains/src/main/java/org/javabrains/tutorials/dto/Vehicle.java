@@ -3,6 +3,7 @@ package org.javabrains.tutorials.dto;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 /**
@@ -19,6 +20,7 @@ public class Vehicle {
     private String vehicleName;
 
     @ManyToOne
+    @JoinColumn(name = "USER_ID")
     private User user;
 
     public User getUser() {

@@ -7,7 +7,6 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -28,10 +27,7 @@ public class User {
     private int userId;
     private String userName;
 
-    @OneToMany
-    @JoinTable(joinColumns = @JoinColumn(name = "USER_ID"),
-               inverseJoinColumns = @JoinColumn(name = "VEHICLE_ID")
-    )
+    @OneToMany(mappedBy = "user")
     private Collection<Vehicle> vehicle = new ArrayList<Vehicle>();
 
     public Collection<Vehicle> getVehicle() {
