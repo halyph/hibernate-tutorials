@@ -19,27 +19,34 @@ public class AppUser {
         Vehicle vehicle = new Vehicle();
         vehicle.setVehicleName("Car");
 
+        Vehicle vehicle2 = new Vehicle();
+        vehicle2.setVehicleName("BMW");
+
         User user = new User();
         user.setUserName("Super Man");
-        user.setVehicle(vehicle);
+        user.getVehicle().add(vehicle);
+        user.getVehicle().add(vehicle2);
+        vehicle.setUser(user);
+        vehicle2.setUser(user);
 
         Session session = sessionFactory.openSession();
         session.beginTransaction();
 
         session.save(user);
         session.save(vehicle);
+        session.save(vehicle2);
 
         session.getTransaction().commit();
 
         session.close();
 
-        user = null;
+        vehicle = null;
 
         session = sessionFactory.openSession();
         session.beginTransaction();
-        user = (User) session.get(User.class, 1);
+        vehicle = (Vehicle) session.get(Vehicle.class, 1);
 
-        System.out.format("User name is %s", user.getUserName());
+        System.out.format("User name is %s", vehicle.getUser().getUserName());
 
     }
 }

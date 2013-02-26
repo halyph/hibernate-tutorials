@@ -3,6 +3,7 @@ package org.javabrains.tutorials.dto;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 /**
  * Created with IntelliJ IDEA.
@@ -16,6 +17,18 @@ public class Vehicle {
     @Id @GeneratedValue
     private int vehicleId;
     private String vehicleName;
+
+    @ManyToOne
+    private User user;
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
 
     public String getVehicleName() {
         return vehicleName;

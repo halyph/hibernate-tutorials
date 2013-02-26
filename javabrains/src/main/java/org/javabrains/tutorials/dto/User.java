@@ -5,8 +5,12 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import java.util.ArrayList;
+import java.util.Collection;
 
 /**
  * Created with IntelliJ IDEA.
@@ -24,12 +28,18 @@ public class User {
     private int userId;
     private String userName;
 
-    @OneToOne
-    @JoinColumn(name = "VEHICLE_ID")
-    private Vehicle vehicle;
+    @OneToMany
+    @JoinTable(joinColumns = @JoinColumn(name = "USER_ID"),
+               inverseJoinColumns = @JoinColumn(name = "VEHICLE_ID")
+    )
+    private Collection<Vehicle> vehicle = new ArrayList<Vehicle>();
 
-    public Vehicle getVehicle() {
+    public Collection<Vehicle> getVehicle() {
         return vehicle;
+    }
+
+    public void setVehicle(Collection<Vehicle> vehicle) {
+        this.vehicle = vehicle;
     }
 
     public String getUserName() {
@@ -48,7 +58,4 @@ public class User {
         this.userId = userId;
     }
 
-    public void setVehicle(Vehicle vehicle) {
-        this.vehicle = vehicle;
-    }
 }
