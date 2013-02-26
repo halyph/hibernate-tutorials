@@ -6,6 +6,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import java.util.ArrayList;
@@ -29,6 +30,17 @@ public class User {
 
     @OneToMany(mappedBy = "user")
     private Collection<Vehicle> vehicle = new ArrayList<Vehicle>();
+
+    @ManyToMany
+    private Collection<Role> role = new ArrayList<Role>();
+
+    public Collection<Role> getRole() {
+        return role;
+    }
+
+    public void setRole(Collection<Role> role) {
+        this.role = role;
+    }
 
     public Collection<Vehicle> getVehicle() {
         return vehicle;
