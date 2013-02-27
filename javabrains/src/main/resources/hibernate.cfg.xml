@@ -27,6 +27,9 @@
         <mapping class="org.javabrains.tutorials.dto.User"/>
         <mapping class="org.javabrains.tutorials.dto.Vehicle"/>
         <mapping class="org.javabrains.tutorials.dto.Role"/>
+        <mapping class="org.javabrains.tutorials.dto.BasicVehicle"/>
+        <mapping class="org.javabrains.tutorials.dto.TwoWheeler"/>
+        <mapping class="org.javabrains.tutorials.dto.FourWheeler"/>
 
     </session-factory>
 </hibernate-configuration>
