@@ -17,10 +17,10 @@ import javax.persistence.InheritanceType;
  * To change this template use File | Settings | File Templates.
  */
 @Entity
-@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
+@Inheritance(strategy = InheritanceType.JOINED)
 public class BasicVehicle {
     @Id
-    @GeneratedValue(strategy = GenerationType.TABLE)
+    @GeneratedValue
     private int id;
     private String vehicleName;
 

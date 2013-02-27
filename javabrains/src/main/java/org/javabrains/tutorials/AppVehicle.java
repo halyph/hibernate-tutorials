@@ -32,6 +32,7 @@ public class AppVehicle {
         FourWheeler fourWheeler = new FourWheeler();
         fourWheeler.setVehicleName("Vaz");
         fourWheeler.setSteeringWheel("Vaz setSteeringWheel");
+        fourWheeler.setWheelType("Whinter");
 
         Session session = sessionFactory.openSession();
         session.beginTransaction();

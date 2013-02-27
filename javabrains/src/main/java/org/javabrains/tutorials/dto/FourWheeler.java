@@ -15,6 +15,16 @@ public class FourWheeler extends BasicVehicle {
 
     private String steeringWheel;
 
+    private String wheelType;
+
+    public String getWheelType() {
+        return wheelType;
+    }
+
+    public void setWheelType(String wheelType) {
+        this.wheelType = wheelType;
+    }
+
     public String getSteeringWheel() {
         return steeringWheel;
     }
