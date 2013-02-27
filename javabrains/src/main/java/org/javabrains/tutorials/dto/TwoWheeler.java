@@ -11,7 +11,6 @@ import javax.persistence.Entity;
  * To change this template use File | Settings | File Templates.
  */
 @Entity
-@DiscriminatorValue("Bike")
 public class TwoWheeler extends BasicVehicle {
 
     private String steeringHandle;
