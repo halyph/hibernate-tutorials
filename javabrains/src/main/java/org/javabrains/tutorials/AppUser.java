@@ -44,9 +44,9 @@ public class AppUser {
         Session session = sessionFactory.openSession();
         session.beginTransaction();
 
-        session.save(user);
-        session.save(vehicle);
-        session.save(vehicle2);
+        session.persist(user);
+//        session.save(vehicle);
+//        session.save(vehicle2);
         session.save(role1);
         session.save(role2);
 

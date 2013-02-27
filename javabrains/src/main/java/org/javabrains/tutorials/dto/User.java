@@ -1,5 +1,6 @@
 package org.javabrains.tutorials.dto;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -28,7 +29,9 @@ public class User {
     private int userId;
     private String userName;
 
-    @OneToMany(mappedBy = "user")
+    @OneToMany(mappedBy = "user",
+               cascade = CascadeType.PERSIST
+    )
     private Collection<Vehicle> vehicle = new ArrayList<Vehicle>();
 
     @ManyToMany
