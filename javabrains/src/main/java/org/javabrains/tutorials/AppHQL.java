@@ -25,6 +25,11 @@ public class AppHQL {
 
         List<BasicVehicle> vehicles = selectBasicVehicles(session);
 
+        Query namedQuery = session.getNamedQuery("BasicVehicle.byId");
+        namedQuery.setInteger(0, 2);
+        List<BasicVehicle> vehiclesViaNamedQ = namedQuery.list();
+
+
         session.getTransaction().commit();
         session.close();
 
@@ -33,6 +38,10 @@ public class AppHQL {
 
         System.out.println("\nAmount of BasicVehicle entities: " + vehicles.size());
         printVehicleNames(vehicles);
+
+        System.out.println("\nNamed Query: " + vehiclesViaNamedQ.size());
+        printVehicleNames(vehiclesViaNamedQ);
+
 
     }
 
