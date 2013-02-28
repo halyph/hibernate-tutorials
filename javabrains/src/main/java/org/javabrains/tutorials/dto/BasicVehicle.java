@@ -24,6 +24,13 @@ public class BasicVehicle {
     private int id;
     private String vehicleName;
 
+    public BasicVehicle() {
+    }
+
+    public BasicVehicle(String vehicleName) {
+        this.vehicleName = vehicleName;
+    }
+
     public int getId() {
         return id;
     }
