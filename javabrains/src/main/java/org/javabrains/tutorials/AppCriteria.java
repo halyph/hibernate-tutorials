@@ -24,7 +24,10 @@ public class AppCriteria {
         session.beginTransaction();
 
         Criteria criteria = session.createCriteria(BasicVehicle.class);
-        criteria.add(Restrictions.eq("vehicleName", "Mercedes1"));
+        criteria.add(Restrictions.or(
+                Restrictions.like("vehicleName", "%Mercedes1%"),
+                Restrictions.gt("id", 3)
+        ));
 
         List<BasicVehicle> basicVehicles = (List<BasicVehicle>) criteria.list();
 
