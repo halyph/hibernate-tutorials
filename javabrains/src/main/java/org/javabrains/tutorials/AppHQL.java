@@ -21,11 +21,19 @@ public class AppHQL {
         Session session = sessionFactory.openSession();
         session.beginTransaction();
 
-        Query query = session.createQuery("from BasicVehicle where id > 5");
-        List vehicles = query.list();
+        Query query = session.createQuery("from BasicVehicle");
+        query.setFirstResult(2);
+        query.setMaxResults(2);
+
+        List<BasicVehicle> vehicles = (List<BasicVehicle>) query.list();
         session.getTransaction().commit();
         session.close();
 
         System.out.println("Amount of BasicVehicle entities: " + vehicles.size());
+        for (BasicVehicle vehicle : vehicles) {
+            System.out.println(vehicle.getVehicleName());
+        }
+
+
     }
 }
