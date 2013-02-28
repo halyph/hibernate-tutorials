@@ -21,19 +21,38 @@ public class AppHQL {
         Session session = sessionFactory.openSession();
         session.beginTransaction();
 
-        Query query = session.createQuery("from BasicVehicle");
-        query.setFirstResult(2);
-        query.setMaxResults(2);
+        List<String> vehicleNames = selectVehicleName(session);
 
-        List<BasicVehicle> vehicles = (List<BasicVehicle>) query.list();
+        List<BasicVehicle> vehicles = selectBasicVehicles(session);
+
         session.getTransaction().commit();
         session.close();
 
-        System.out.println("Amount of BasicVehicle entities: " + vehicles.size());
-        for (BasicVehicle vehicle : vehicles) {
-            System.out.println(vehicle.getVehicleName());
+        System.out.println("Amount of BasicVehicle names: " + vehicleNames.size());
+        printVehicleNames(vehicleNames);
+
+        System.out.println("\nAmount of BasicVehicle entities: " + vehicles.size());
+        printVehicleNames(vehicles);
+
+    }
+
+    private static List<BasicVehicle> selectBasicVehicles(Session session) {
+        Query query = session.createQuery("from BasicVehicle where id > :minId");
+        query.setInteger("minId", 3);
+        return (List<BasicVehicle>) query.list();
+    }
+
+    private static <T> void printVehicleNames(List<T> vehicleNames) {
+        for (T vehicleName : vehicleNames) {
+            System.out.println(vehicleName);
         }
+    }
 
+    private static List<String> selectVehicleName(Session session) {
+        Query query = session.createQuery("select vehicleName from BasicVehicle");
+        query.setFirstResult(2);
+        query.setMaxResults(2);
 
+        return (List<String>) query.list();
     }
 }

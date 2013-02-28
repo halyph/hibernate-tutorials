@@ -46,4 +46,12 @@ public class BasicVehicle {
     public void setVehicleName(String vehicleName) {
         this.vehicleName = vehicleName;
     }
+
+    @Override
+    public String toString() {
+        return "BasicVehicle{" +
+                "id=" + id +
+                ", vehicleName='" + vehicleName + '\'' +
+                '}';
+    }
 }
