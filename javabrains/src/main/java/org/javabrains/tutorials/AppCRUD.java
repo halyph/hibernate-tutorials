@@ -31,9 +31,19 @@ public class AppCRUD {
         basicVehicle.setVehicleName("BMW X3");
         session.update(basicVehicle);
 
+        session.getTransaction().commit();
+        session.close();
+
+        // Step 4- Persist detached object
+        basicVehicle.setVehicleName("Updated  value");
+        session = sessionFactory.openSession();
+        session.beginTransaction();
+
+        session.update(basicVehicle);
 
         session.getTransaction().commit();
         session.close();
+
     }
 
     private static void createBunchOfVehicles(Session session) {
